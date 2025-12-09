@@ -1,0 +1,243 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Categories - UGR Community Blog" description="Explore content categories on the UGR Community Blog" />
+		<style>
+			main {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 3rem;
+				color: rgb(var(--black));
+			}
+			.intro {
+				text-align: center;
+				max-width: 800px;
+				margin: 0 auto 3rem;
+				font-size: 1.1em;
+				line-height: 1.7;
+				color: rgb(var(--gray-dark));
+			}
+			.categories-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem;
+				margin-bottom: 3rem;
+			}
+			.category-card {
+				background: white;
+				padding: 2rem;
+				border-radius: 12px;
+				box-shadow: 0 2px 8px rgba(var(--gray), 15%);
+				transition: all 0.3s ease;
+				border-top: 4px solid var(--accent);
+			}
+			.category-card:hover {
+				box-shadow: var(--box-shadow);
+				transform: translateY(-4px);
+			}
+			.category-icon {
+				font-size: 3em;
+				margin-bottom: 1rem;
+				display: block;
+			}
+			.category-title {
+				margin: 0 0 1rem 0;
+				color: rgb(var(--black));
+				font-size: 1.5em;
+			}
+			.category-description {
+				color: rgb(var(--gray-dark));
+				line-height: 1.7;
+				margin-bottom: 1rem;
+			}
+			.category-examples {
+				margin-top: 1rem;
+				padding-top: 1rem;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.category-examples h4 {
+				margin: 0 0 0.5rem 0;
+				font-size: 0.9em;
+				color: rgb(var(--gray-dark));
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
+			.category-examples ul {
+				margin: 0;
+				padding-left: 1.5rem;
+				font-size: 0.9em;
+				color: rgb(var(--gray));
+			}
+			.category-examples li {
+				margin-bottom: 0.25rem;
+			}
+			.cta-section {
+				text-align: center;
+				margin-top: 3rem;
+				padding: 2rem;
+				background: linear-gradient(var(--gray-gradient));
+				border-radius: 12px;
+			}
+			.cta-button {
+				display: inline-block;
+				padding: 1rem 2rem;
+				background: var(--accent);
+				color: white;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 700;
+				margin-top: 1rem;
+				transition: background 0.2s ease;
+			}
+			.cta-button:hover {
+				background: var(--accent-dark);
+			}
+			@media (max-width: 768px) {
+				.categories-grid {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Content Categories</h1>
+			<div class="intro">
+				<p>
+					The UGR Community Blog organizes content into thematic categories to help you discover articles that interest you and to ensure your submissions reach the right audience. Each category represents a different area of knowledge and expression within our university community.
+				</p>
+			</div>
+
+			<div class="categories-grid">
+				<div class="category-card">
+					<span class="category-icon">🔬</span>
+					<h2 class="category-title">Science</h2>
+					<p class="category-description">
+						Explore the latest scientific research, discoveries, and academic studies from the University of Granada. This category includes articles about scientific methodology, research findings, and insights into various scientific disciplines.
+					</p>
+					<div class="category-examples">
+						<h4>Example Topics:</h4>
+						<ul>
+							<li>Research findings and discoveries</li>
+							<li>Scientific methodology and processes</li>
+							<li>Interdisciplinary research</li>
+							<li>Laboratory techniques and innovations</li>
+							<li>Scientific communication and outreach</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="category-card">
+					<span class="category-icon">📚</span>
+					<h2 class="category-title">Literature</h2>
+					<p class="category-description">
+						Dive into literary analysis, book reviews, creative writing, and discussions about literature. This category celebrates the written word and encourages thoughtful engagement with literary works and creative expression.
+					</p>
+					<div class="category-examples">
+						<h4>Example Topics:</h4>
+						<ul>
+							<li>Book reviews and literary analysis</li>
+							<li>Creative writing and poetry</li>
+							<li>Literary theory and criticism</li>
+							<li>Author studies and biographies</li>
+							<li>Literary movements and history</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="category-card">
+					<span class="category-icon">💻</span>
+					<h2 class="category-title">Programming</h2>
+					<p class="category-description">
+						Learn about programming, software development, and technology. This category includes tutorials, coding tips, technology insights, and discussions about software engineering practices and tools.
+					</p>
+					<div class="category-examples">
+						<h4>Example Topics:</h4>
+						<ul>
+							<li>Programming tutorials and guides</li>
+							<li>Software development best practices</li>
+							<li>Technology reviews and comparisons</li>
+							<li>Algorithm explanations and problem-solving</li>
+							<li>Open source projects and contributions</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="category-card">
+					<span class="category-icon">🏥</span>
+					<h2 class="category-title">Medicine</h2>
+					<p class="category-description">
+						Discover articles about health, medical research, and wellness. This category covers medical knowledge, health information, research findings, and discussions about healthcare practices and public health.
+					</p>
+					<div class="category-examples">
+						<h4>Example Topics:</h4>
+						<ul>
+							<li>Medical research and studies</li>
+							<li>Health and wellness information</li>
+							<li>Healthcare practices and ethics</li>
+							<li>Public health topics</li>
+							<li>Medical education and training</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="category-card">
+					<span class="category-icon">🎨</span>
+					<h2 class="category-title">Art</h2>
+					<p class="category-description">
+						Celebrate creativity and artistic expression. This category includes visual arts, music, theater, dance, and other forms of creative expression. Share your artistic work, reviews, and discussions about art and culture.
+					</p>
+					<div class="category-examples">
+						<h4>Example Topics:</h4>
+						<ul>
+							<li>Visual arts and exhibitions</li>
+							<li>Music and performance reviews</li>
+							<li>Theater and drama</li>
+							<li>Artistic techniques and processes</li>
+							<li>Cultural events and festivals</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="category-card">
+					<span class="category-icon">💭</span>
+					<h2 class="category-title">Opinion</h2>
+					<p class="category-description">
+						Share your perspectives, thoughts, and opinions on various topics relevant to the university community. This category encourages thoughtful discussion and diverse viewpoints on academic, social, and cultural issues.
+					</p>
+					<div class="category-examples">
+						<h4>Example Topics:</h4>
+						<ul>
+							<li>Editorials and opinion pieces</li>
+							<li>Social and cultural commentary</li>
+							<li>Academic policy discussions</li>
+							<li>Personal reflections and experiences</li>
+							<li>Debates and critical analysis</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="cta-section">
+				<h2>Ready to Contribute?</h2>
+				<p>Choose the category that best fits your content and share your knowledge with the UGR community!</p>
+				<a href="/submit" class="cta-button">Submit Your Article</a>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+

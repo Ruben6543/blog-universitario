@@ -1,0 +1,293 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE, UGR_EMAIL } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Submit Article - UGR Community Blog" description="Submit your article to the UGR Community Blog" />
+		<style>
+			main {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			h1 {
+				text-align: center;
+				margin-bottom: 1rem;
+				color: rgb(var(--black));
+			}
+			.subtitle {
+				text-align: center;
+				color: rgb(var(--gray));
+				margin-bottom: 2rem;
+				font-size: 1.1em;
+			}
+			.info-box {
+				background: #e7f3ff;
+				border-left: 4px solid var(--accent);
+				padding: 1.5rem;
+				margin-bottom: 2rem;
+				border-radius: 4px;
+			}
+			.info-box h3 {
+				margin-top: 0;
+				color: rgb(var(--black));
+			}
+			.info-box ul {
+				margin-bottom: 0;
+			}
+			.submission-form {
+				background: white;
+				padding: 2rem;
+				border-radius: 12px;
+				box-shadow: 0 2px 8px rgba(var(--gray), 15%);
+			}
+			.form-group {
+				margin-bottom: 1.5rem;
+			}
+			.form-group label {
+				display: block;
+				margin-bottom: 0.5rem;
+				font-weight: 700;
+				color: rgb(var(--black));
+			}
+			.form-group input,
+			.form-group select,
+			.form-group textarea {
+				width: 100%;
+				padding: 0.75rem;
+				border: 2px solid rgb(var(--gray-light));
+				border-radius: 6px;
+				font-family: inherit;
+				font-size: 1em;
+				transition: border-color 0.2s ease;
+			}
+			.form-group input:focus,
+			.form-group select:focus,
+			.form-group textarea:focus {
+				outline: none;
+				border-color: var(--accent);
+			}
+			.form-group textarea {
+				min-height: 150px;
+				resize: vertical;
+			}
+			.form-group .help-text {
+				font-size: 0.85em;
+				color: rgb(var(--gray));
+				margin-top: 0.25rem;
+			}
+			.form-group.required label::after {
+				content: " *";
+				color: #dc3545;
+			}
+			.submit-button {
+				width: 100%;
+				padding: 1rem;
+				background: var(--accent);
+				color: white;
+				border: none;
+				border-radius: 8px;
+				font-size: 1.1em;
+				font-weight: 700;
+				cursor: pointer;
+				transition: background 0.2s ease;
+			}
+			.submit-button:hover {
+				background: var(--accent-dark);
+			}
+			.submit-button:disabled {
+				background: rgb(var(--gray-light));
+				cursor: not-allowed;
+			}
+			.guidelines-link {
+				text-align: center;
+				margin-top: 2rem;
+				padding-top: 2rem;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.guidelines-link a {
+				color: var(--accent);
+				text-decoration: none;
+			}
+			.guidelines-link a:hover {
+				text-decoration: underline;
+			}
+			.success-message {
+				background: #d1e7dd;
+				border-left: 4px solid #198754;
+				padding: 1.5rem;
+				margin-bottom: 2rem;
+				border-radius: 4px;
+				display: none;
+			}
+			.success-message.show {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Submit Your Article</h1>
+			<p class="subtitle">
+				Share your knowledge, ideas, and experiences with the UGR community
+			</p>
+
+			<div class="info-box">
+				<h3>Before You Submit</h3>
+				<ul>
+					<li>No account registration required - anyone from the UGR community can submit</li>
+					<li>All submissions go through a moderation process (typically 2-5 business days)</li>
+					<li>Please review our <a href="/guidelines">content guidelines</a> before submitting</li>
+					<li>Ensure your content is original, well-written, and relevant to the UGR community</li>
+					<li>Select the most appropriate category for your content</li>
+				</ul>
+			</div>
+
+			<div class="success-message" id="success-message">
+				<h3>Thank You!</h3>
+				<p>Your article has been submitted successfully. Our moderation team will review it and get back to you within 2-5 business days. You will be notified via email once your article is approved or if any changes are needed.</p>
+			</div>
+
+			<form class="submission-form" id="submission-form">
+				<div class="form-group required">
+					<label for="title">Article Title</label>
+					<input type="text" id="title" name="title" required minlength="10" maxlength="100" placeholder="Enter a clear and engaging title">
+					<span class="help-text">Between 10 and 100 characters</span>
+				</div>
+
+				<div class="form-group required">
+					<label for="category">Category</label>
+					<select id="category" name="category" required>
+						<option value="">Select a category</option>
+						<option value="science">Science</option>
+						<option value="literature">Literature</option>
+						<option value="programming">Programming</option>
+						<option value="medicine">Medicine</option>
+						<option value="art">Art</option>
+						<option value="opinion">Opinion</option>
+					</select>
+					<span class="help-text">Choose the category that best fits your content. <a href="/categories">Learn more about categories</a></span>
+				</div>
+
+				<div class="form-group required">
+					<label for="excerpt">Excerpt / Summary</label>
+					<textarea id="excerpt" name="excerpt" required minlength="50" maxlength="300" placeholder="Provide a brief summary of your article (100-200 words recommended)"></textarea>
+					<span class="help-text">A brief summary that captures the essence of your article. This will be displayed on the blog listing page.</span>
+				</div>
+
+				<div class="form-group required">
+					<label for="content">Article Content</label>
+					<textarea id="content" name="content" required minlength="500" placeholder="Write your article here. Minimum 500 words." style="min-height: 400px;"></textarea>
+					<span class="help-text">Minimum 500 words. Use clear headings, paragraphs, and formatting. You can use Markdown syntax.</span>
+				</div>
+
+				<div class="form-group required">
+					<label for="author-name">Your Name</label>
+					<input type="text" id="author-name" name="author-name" required placeholder="Your full name">
+					<span class="help-text">This will be displayed as the author of the article</span>
+				</div>
+
+				<div class="form-group required">
+					<label for="author-affiliation">UGR Affiliation</label>
+					<input type="text" id="author-affiliation" name="author-affiliation" required placeholder="e.g., Student - Faculty of Science, Professor - Department of Computer Science">
+					<span class="help-text">Your role and department/faculty at UGR</span>
+				</div>
+
+				<div class="form-group required">
+					<label for="email">Email Address</label>
+					<input type="email" id="email" name="email" required placeholder="your.email@ugr.es">
+					<span class="help-text">We'll use this to notify you about the status of your submission</span>
+				</div>
+
+				<div class="form-group">
+					<label>
+						<input type="checkbox" id="guidelines-check" name="guidelines-check" required>
+						I have read and agree to follow the <a href="/guidelines" target="_blank">content guidelines</a>
+					</label>
+				</div>
+
+				<div class="form-group">
+					<label>
+						<input type="checkbox" id="original-check" name="original-check" required>
+						I confirm that this content is original and does not violate any copyright or intellectual property rights
+					</label>
+				</div>
+
+				<button type="submit" class="submit-button" id="submit-button">
+					Submit Article
+				</button>
+			</form>
+
+			<div class="guidelines-link">
+				<p>
+					Need help? Review our <a href="/guidelines">content guidelines</a> or contact us at <a href={`mailto:${UGR_EMAIL}`}>{UGR_EMAIL}</a>
+				</p>
+			</div>
+		</main>
+		<Footer />
+
+		<script>
+			// Form submission handling
+			document.getElementById('submission-form').addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				// Get form data
+				const formData = new FormData(this);
+				const data = Object.fromEntries(formData);
+				
+				// Validate required checkboxes
+				if (!document.getElementById('guidelines-check').checked || 
+				    !document.getElementById('original-check').checked) {
+					alert('Please confirm that you have read the guidelines and that your content is original.');
+					return;
+				}
+				
+				// Disable submit button
+				const submitButton = document.getElementById('submit-button');
+				submitButton.disabled = true;
+				submitButton.textContent = 'Submitting...';
+				
+				// Simulate form submission (in a real implementation, this would send to a backend)
+				setTimeout(() => {
+					// Hide form
+					document.getElementById('submission-form').style.display = 'none';
+					
+					// Show success message
+					document.getElementById('success-message').classList.add('show');
+					
+					// Scroll to top
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+					
+					// In a real implementation, you would:
+					// 1. Send the data to your backend API
+					// 2. Handle the response
+					// 3. Show success/error messages accordingly
+					console.log('Form data:', data);
+				}, 1000);
+			});
+			
+			// Character counter for excerpt
+			const excerptTextarea = document.getElementById('excerpt');
+			const excerptHelp = excerptTextarea.nextElementSibling;
+			excerptTextarea.addEventListener('input', function() {
+				const length = this.value.length;
+				excerptHelp.textContent = `A brief summary that captures the essence of your article. This will be displayed on the blog listing page. (${length} characters)`;
+			});
+			
+			// Word counter for content
+			const contentTextarea = document.getElementById('content');
+			const contentHelp = contentTextarea.nextElementSibling;
+			contentTextarea.addEventListener('input', function() {
+				const wordCount = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+				contentHelp.textContent = `Minimum 500 words. Use clear headings, paragraphs, and formatting. You can use Markdown syntax. (${wordCount} words)`;
+			});
+		</script>
+	</body>
+</html>
+

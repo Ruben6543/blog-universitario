@@ -1,0 +1,232 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="Content Guidelines - UGR Community Blog" description="Guidelines for submitting content to the UGR Community Blog" />
+		<style>
+			main {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			h1 {
+				margin-bottom: 1.5rem;
+				color: rgb(var(--black));
+			}
+			h2 {
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+				color: rgb(var(--black));
+				border-bottom: 2px solid rgb(var(--gray-light));
+				padding-bottom: 0.5rem;
+			}
+			h3 {
+				margin-top: 1.5rem;
+				margin-bottom: 0.75rem;
+				color: rgb(var(--gray-dark));
+			}
+			ul, ol {
+				margin-bottom: 1.5rem;
+				padding-left: 2rem;
+			}
+			li {
+				margin-bottom: 0.5rem;
+				line-height: 1.7;
+			}
+			.guideline-section {
+				background: white;
+				padding: 2rem;
+				border-radius: 12px;
+				box-shadow: 0 2px 8px rgba(var(--gray), 15%);
+				margin-bottom: 2rem;
+			}
+			.warning-box {
+				background: #fff3cd;
+				border-left: 4px solid #ffc107;
+				padding: 1rem 1.5rem;
+				margin: 1.5rem 0;
+				border-radius: 4px;
+			}
+			.success-box {
+				background: #d1e7dd;
+				border-left: 4px solid #198754;
+				padding: 1rem 1.5rem;
+				margin: 1.5rem 0;
+				border-radius: 4px;
+			}
+			.cta-section {
+				text-align: center;
+				margin-top: 3rem;
+				padding: 2rem;
+				background: linear-gradient(var(--gray-gradient));
+				border-radius: 12px;
+			}
+			.cta-button {
+				display: inline-block;
+				padding: 1rem 2rem;
+				background: var(--accent);
+				color: white;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 700;
+				margin-top: 1rem;
+				transition: background 0.2s ease;
+			}
+			.cta-button:hover {
+				background: var(--accent-dark);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Content Guidelines</h1>
+			<p>
+				Welcome to the UGR Community Blog! To ensure quality and maintain a positive environment for all members of the University of Granada community, please follow these guidelines when submitting content.
+			</p>
+
+			<div class="guideline-section">
+				<h2>General Principles</h2>
+				<ul>
+					<li><strong>Respect</strong> - Treat all community members with respect and dignity</li>
+					<li><strong>Accuracy</strong> - Ensure your content is factually accurate and well-researched</li>
+					<li><strong>Relevance</strong> - Content should be relevant to the university community or academic interests</li>
+					<li><strong>Originality</strong> - Submit original content or properly attribute sources</li>
+					<li><strong>Accessibility</strong> - Write in clear, accessible language that can be understood by diverse audiences</li>
+				</ul>
+			</div>
+
+			<div class="guideline-section">
+				<h2>Content Requirements</h2>
+				
+				<h3>Article Structure</h3>
+				<ul>
+					<li><strong>Title</strong> - Clear, descriptive, and engaging (50-100 characters)</li>
+					<li><strong>Category</strong> - Select the most appropriate category for your content</li>
+					<li><strong>Content</strong> - Minimum 500 words, well-structured with headings and paragraphs</li>
+					<li><strong>Excerpt</strong> - A brief summary (100-200 words) that captures the essence of your article</li>
+					<li><strong>Author Information</strong> - Your name and affiliation with UGR</li>
+				</ul>
+
+				<h3>Writing Quality</h3>
+				<ul>
+					<li>Use proper grammar, spelling, and punctuation</li>
+					<li>Write in Spanish or English (specify your language preference)</li>
+					<li>Use clear and concise language</li>
+					<li>Structure your content with headings, subheadings, and paragraphs</li>
+					<li>Include relevant examples, data, or references when appropriate</li>
+				</ul>
+			</div>
+
+			<div class="guideline-section">
+				<h2>Prohibited Content</h2>
+				<p>The following types of content are not allowed:</p>
+				<ul>
+					<li><strong>Plagiarism</strong> - Do not submit content that is not your own without proper attribution</li>
+					<li><strong>Hate Speech</strong> - Content that promotes discrimination, harassment, or violence</li>
+					<li><strong>False Information</strong> - Deliberately misleading or false information</li>
+					<li><strong>Spam</strong> - Promotional content, advertisements, or repetitive submissions</li>
+					<li><strong>Personal Attacks</strong> - Content that attacks individuals rather than ideas</li>
+					<li><strong>Illegal Content</strong> - Content that violates laws or university policies</li>
+					<li><strong>Inappropriate Material</strong> - Explicit, offensive, or inappropriate content</li>
+				</ul>
+			</div>
+
+			<div class="guideline-section">
+				<h2>Category-Specific Guidelines</h2>
+				
+				<h3>Science</h3>
+				<ul>
+					<li>Present research findings clearly and accurately</li>
+					<li>Cite sources and references</li>
+					<li>Explain complex concepts in accessible language</li>
+					<li>Distinguish between established facts and hypotheses</li>
+				</ul>
+
+				<h3>Literature</h3>
+				<ul>
+					<li>Provide thoughtful analysis and critique</li>
+					<li>Avoid spoilers or provide warnings when necessary</li>
+					<li>Support opinions with examples from the text</li>
+					<li>Respect diverse perspectives and interpretations</li>
+				</ul>
+
+				<h3>Programming</h3>
+				<ul>
+					<li>Include working code examples when relevant</li>
+					<li>Explain concepts clearly for different skill levels</li>
+					<li>Test code before sharing</li>
+					<li>Provide context and use cases</li>
+				</ul>
+
+				<h3>Medicine</h3>
+				<ul>
+					<li>Ensure medical information is accurate and up-to-date</li>
+					<li>Include disclaimers when appropriate</li>
+					<li>Cite medical sources and research</li>
+					<li>Do not provide medical diagnoses or treatment advice</li>
+				</ul>
+
+				<h3>Art</h3>
+				<ul>
+					<li>Include images or descriptions of artwork when relevant</li>
+					<li>Provide context and interpretation</li>
+					<li>Respect copyright and intellectual property</li>
+					<li>Encourage constructive discussion</li>
+				</ul>
+
+				<h3>Opinion</h3>
+				<ul>
+					<li>Clearly identify opinions as such</li>
+					<li>Support opinions with reasoning and evidence</li>
+					<li>Be open to respectful disagreement</li>
+					<li>Avoid inflammatory or divisive language</li>
+				</ul>
+			</div>
+
+			<div class="guideline-section">
+				<h2>Moderation Process</h2>
+				<p>All submitted content goes through a moderation process:</p>
+				<ol>
+					<li><strong>Initial Review</strong> - Content is reviewed for compliance with guidelines</li>
+					<li><strong>Quality Check</strong> - Content is evaluated for quality, accuracy, and relevance</li>
+					<li><strong>Approval/Rejection</strong> - Content is either approved for publication or returned with feedback</li>
+					<li><strong>Publication</strong> - Approved content is published and made available to the community</li>
+				</ol>
+				
+				<div class="warning-box">
+					<strong>Note:</strong> Moderation typically takes 2-5 business days. If your content is rejected, you will receive feedback explaining why and suggestions for improvement.
+				</div>
+			</div>
+
+			<div class="guideline-section">
+				<h2>Best Practices</h2>
+				<ul>
+					<li><strong>Proofread</strong> - Review your content before submitting</li>
+					<li><strong>Research</strong> - Verify facts and cite sources</li>
+					<li><strong>Engage</strong> - Respond to comments and engage with readers</li>
+					<li><strong>Update</strong> - Keep your content current and accurate</li>
+					<li><strong>Share</strong> - Promote your published articles on social media</li>
+				</ul>
+			</div>
+
+			<div class="success-box">
+				<strong>Remember:</strong> The goal of the UGR Community Blog is to foster knowledge sharing and academic exchange. By following these guidelines, you contribute to creating a valuable resource for the entire university community.
+			</div>
+
+			<div class="cta-section">
+				<h2>Ready to Submit?</h2>
+				<p>Now that you've reviewed our guidelines, you're ready to share your knowledge with the UGR community!</p>
+				<a href="/submit" class="cta-button">Submit Your Article</a>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
